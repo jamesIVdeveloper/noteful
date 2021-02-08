@@ -1,5 +1,6 @@
 import React from "react";
 import Note from "../Note/Note";
+import PropTypes from "prop-types";
 import APIContext from "../APIContext";
 import { findNote } from "../notes-helpers";
 import "./NotePageMain.css";
@@ -38,3 +39,8 @@ export default class NotePageMain extends React.Component {
     );
   }
 }
+
+NotePageMain.propTypes = {
+  history: PropTypes.string,
+  match: PropTypes.string,
+};
