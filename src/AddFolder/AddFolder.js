@@ -10,6 +10,9 @@ export default class AddFolder extends Component {
     history: {
       push: () => {},
     },
+    folder: {
+      value: "",
+    },
   };
   static contextType = APIContext;
 
@@ -65,5 +68,6 @@ export default class AddFolder extends Component {
 }
 
 AddFolder.propTypes = {
-  history: PropTypes.string,
+  history: PropTypes.object.isRequired,
+  folder: PropTypes.object.isRequired,
 };

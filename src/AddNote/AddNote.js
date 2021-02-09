@@ -27,6 +27,16 @@ export default class AddNote extends Component {
     history: {
       push: () => {},
     },
+    name: {
+      value: "",
+      touched: false,
+    },
+    content: {
+      value: "",
+    },
+    folderId: {
+      value: "",
+    },
   };
   static contextType = APIContext;
 
@@ -110,6 +120,7 @@ export default class AddNote extends Component {
               id="note-content-input"
               name="note-content"
               onChange={(e) => this.updateContent(e.target.value)}
+              required
             />
           </div>
           <div className="field">
@@ -118,6 +129,7 @@ export default class AddNote extends Component {
               id="note-folder-select"
               name="note-folder-id"
               onChange={(e) => this.updateFolderId(e.target.value)}
+              required
             >
               <option value={null}>...</option>
               {folders.map((folder) => (
@@ -139,5 +151,8 @@ export default class AddNote extends Component {
 }
 
 AddNote.propTypes = {
-  history: PropTypes.string,
+  history: PropTypes.object.isRequired,
+  name: PropTypes.object.isRequired,
+  content: PropTypes.object.isRequired,
+  folderId: PropTypes.object.isRequired,
 };

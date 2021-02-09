@@ -42,6 +42,6 @@ export default class NotePageNav extends React.Component {
 }
 
 NotePageNav.propTypes = {
-  history: PropTypes.string,
-  match: PropTypes.string,
+  history: PropTypes.object,
+  match: PropTypes.object,
 };
