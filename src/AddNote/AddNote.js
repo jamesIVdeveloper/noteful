@@ -27,16 +27,6 @@ export default class AddNote extends Component {
     history: {
       push: () => {},
     },
-    name: {
-      value: "",
-      touched: false,
-    },
-    content: {
-      value: "",
-    },
-    folderId: {
-      value: "",
-    },
   };
   static contextType = APIContext;
 
@@ -98,7 +88,6 @@ export default class AddNote extends Component {
     return (
       <section className="AddNote">
         <h2>Create a New Note</h2>
-
         <NotefulForm onSubmit={this.handleSubmit}>
           <div className="field">
             <label htmlFor="note-name-input">Name</label>
@@ -131,7 +120,9 @@ export default class AddNote extends Component {
               onChange={(e) => this.updateFolderId(e.target.value)}
               required
             >
-              <option value={null}>...</option>
+              <option value="" disabled selected>
+                ...
+              </option>
               {folders.map((folder) => (
                 <option key={folder.id} value={folder.id}>
                   {folder.name}
@@ -140,7 +131,11 @@ export default class AddNote extends Component {
             </select>
           </div>
           <div className="buttons">
-            <button type="submit" disabled={this.validateName()}>
+            <button
+              type="submit"
+              id="add-note-button"
+              disabled={this.validateName()}
+            >
               Add Note
             </button>
           </div>
@@ -152,7 +147,4 @@ export default class AddNote extends Component {
 
 AddNote.propTypes = {
   history: PropTypes.object.isRequired,
-  name: PropTypes.object.isRequired,
-  content: PropTypes.object.isRequired,
-  folderId: PropTypes.object.isRequired,
 };
